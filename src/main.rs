@@ -1,7 +1,7 @@
 #![no_std]
 #![no_main]
 
-mod vga_buffer;
+mod print;
 
 use core::panic::PanicInfo;
 
@@ -10,11 +10,13 @@ fn panic(_info: &PanicInfo) -> ! {
     loop {}
 }
 
-static HELLO: &[u8] = b"Hello Rust Kernel!";
-
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
-    vga_buffer::print_something();
+    print!("We can do it!\r");
+    print!("We can do it!\r");
+    println!("We can do it!");
+    println!("We can do it!");
+    loop {
 
-    loop {}
+    }
 }
